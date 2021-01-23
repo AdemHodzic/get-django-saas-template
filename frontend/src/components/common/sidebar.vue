@@ -9,6 +9,7 @@
         :key="route.path"
         :to="route.path"
         :class="{ 'active-route': route.path === $router.currentRoute.path }">
+        <font-awesome-icon :icon="route.icon" class="sidebar__link--icon"/>
         {{ route.name }}
       </router-link>
     </nav>
@@ -42,7 +43,7 @@ export default {
     @apply flex;
     @apply flex-col;
     @apply justify-start;
-    @apply items-stretch;
+    @apply items-start;
     gap: 8px;
   }
 

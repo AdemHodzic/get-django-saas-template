@@ -9,11 +9,13 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    icon: ['fa', 'home'],
   },
   {
     path: '/profile',
     name: 'Profile',
     component: () => import(/* webpackChunkName: "profile" */ '../pages/Profile.vue'),
+    icon: ['fa', 'user'],
   },
 ];
 
