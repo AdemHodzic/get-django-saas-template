@@ -1,5 +1,5 @@
 <template >
-  <div>Hello </div>
+  <div class="home">Hello </div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
 </script>
 
 <style>
-  div {
-    @apply text-green-400
+  .home {
+    @apply bg-red-400
   }
 </style>
