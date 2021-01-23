@@ -10,6 +10,5 @@ export default {
 
 <style>
   .home {
-    @apply bg-red-400
   }
 </style>
