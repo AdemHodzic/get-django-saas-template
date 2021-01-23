@@ -1,5 +1,5 @@
 <template >
-  <h1>Hello World</h1>
+  <div>Hello </div>
 </template>
 
 <script>
@@ -9,5 +9,7 @@ export default {
 </script>
 
 <style>
-
+  div {
+    @apply text-green-400
+  }
 </style>
