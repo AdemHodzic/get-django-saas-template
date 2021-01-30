@@ -30,6 +30,7 @@ export default {
     @apply items-stretch;
     @apply border-gray-300;
     @apply px-4;
+    @apply bg-white;
     border-right-width: 1px;
     gap: 16px;
   }

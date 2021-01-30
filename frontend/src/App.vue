@@ -21,6 +21,7 @@ export default {
     @apply flex;
     @apply justify-start;
     @apply items-stretch;
+    @apply bg-gray-100;
     height: 100vh;
     width: 100vw;
   }
