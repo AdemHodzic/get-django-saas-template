@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../pages/Home.vue';
 import Login from '../pages/Login.vue';
+import Register from '../pages/Register.vue';
 
 import AuthLayout from '../layouts/auth.vue';
 import DefaultLayout from '../layouts/default.vue';
@@ -13,11 +14,18 @@ const routes = [
     path: '/auth',
     name: 'Auth',
     component: AuthLayout,
-    children: [{
-      path: 'login',
-      name: 'Auth_login',
-      component: Login,
-    }],
+    children: [
+      {
+        path: 'login',
+        name: 'Auth_login',
+        component: Login,
+      },
+      {
+        path: 'register',
+        name: 'Auth_register',
+        component: Register,
+      },
+    ],
   },
   {
     path: '/',
