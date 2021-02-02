@@ -16,3 +16,20 @@ class UserSerializer(serializers.ModelSerializer):
   def get_avatar(self, obj):
     return obj.avatar.url if obj.avatar else settings.MEDIA_URL + \
         'default_avatar.png'
+
+class UserWriteSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = User
+    fields = [
+      'first_name',
+      'last_name',
+      'email',
+      'password',
+    ]
+
+  def create(self, validated_data):
+    password = validated_data.pop('password')
+    user = super().create(validated_data)
+    user.set_password(password)
+    user.save()
+    return user
