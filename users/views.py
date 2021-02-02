@@ -6,7 +6,7 @@ from rest_framework.authtoken.models import Token
 
 from django.contrib import auth
 
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserWriteSerializer
 from .models import User
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -27,3 +27,25 @@ class UserViewSet(viewsets.ModelViewSet):
                       'token': token.key},
                       status=status.HTTP_200_OK)
     return Response(status=status.HTTP_401_UNAUTHORIZED)
+    
+  @action(detail=False, methods=['post'], permission_classes=[AllowAny], authentication_classes=[])
+  def register(self, request):
+    email = request.data.get('email', None)
+
+    if User.objects.filter(email__iexact=email).exists():
+        return Response({'status': 210})
+
+    serializer = UserWriteSerializer(data=request.data)
+
+    if not serializer.is_valid():
+      return Response(data=serializer.errors, status=500)
+
+    serializer.save()
+
+    user = User.objects.get(**serializer.data)
+
+    token, _ = Token.objects.get_or_create(user=user)
+
+    return Response(
+        data={**UserSerializer(user).data, 'token': token.key},
+        status=status.HTTP_201_CREATED)
