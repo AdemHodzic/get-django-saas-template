@@ -2,6 +2,7 @@ from rest_framework import status,viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
 
 from django.contrib import auth
@@ -49,3 +50,13 @@ class UserViewSet(viewsets.ModelViewSet):
     return Response(
         data={**UserSerializer(user).data, 'token': token.key},
         status=status.HTTP_201_CREATED)
+
+  @action(detail=False, methods=['GET'], permission_classes=[AllowAny], authentication_classes=[TokenAuthentication])
+  def profile(self, request):
+    if request.auth is not None :
+      serializer = UserSerializer(request.user)
+      token, _ = Token.objects.get_or_create(user=request.user)
+      return Response(status=status.HTTP_200_OK,
+                      data={**serializer.data,
+                            'token': token.key,})
+    return Response(status=status.HTTP_401_UNAUTHORIZED)

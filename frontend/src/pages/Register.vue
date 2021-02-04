@@ -28,7 +28,7 @@
             <button type="submit" class="bg-blue-900 text-white text-sm font-bold rounded-md p-4">Create My Account</button>
         </form>
         <div class="text-xs font-semibold text-gray-700">
-            Already have an account? <router-link to="/auth/login" class="text-blue-600">Log in</router-link>
+            Already have an account? <router-link to="/auth/login" :query="$route.query" class="text-blue-600">Log in</router-link>
         </div>
     </div>
   </div>
@@ -54,14 +54,20 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['register']),
-    onSubmit(event) {
+    async onSubmit(event) {
       event.preventDefault();
-      this.register({
+
+      await this.register({
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
         password: this.password,
       });
+
+      if (!this.errors || this.errors.length === 0) {
+        const to = this.$route.query.redirectFrom || '/';
+        this.$router.push(to)
+      } 
     },
   },
 };

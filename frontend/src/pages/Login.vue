@@ -16,7 +16,7 @@
             <button type="submit" class="bg-blue-900 text-white text-sm font-bold rounded-md p-4">Login</button>
         </form>
         <div class="text-xs font-semibold text-gray-700">
-            Don't have an account? <router-link to="/auth/register" class="text-blue-600">Sign up</router-link>
+            Don't have an account? <router-link to="/auth/register" :query="$route.query" class="text-blue-600">Sign up</router-link>
         </div>
     </div>
   </div>
@@ -39,12 +39,17 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['login']),
-    onSubmit(event) {
+    async onSubmit (event) {
       event.preventDefault();
-      this.login({
+      await this.login({
         email: this.email,
         password: this.password,
       });
+
+      if (!this.errors || this.errors.length === 0) {
+        const to = this.$route.query.redirectFrom || '/';
+        this.$router.push(to)
+      } 
     },
   },
 };

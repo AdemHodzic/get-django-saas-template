@@ -7,6 +7,8 @@ import Register from '../pages/Register.vue';
 import AuthLayout from '../layouts/auth.vue';
 import DefaultLayout from '../layouts/default.vue';
 
+import store from '@/store'
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -45,6 +47,23 @@ const routes = [
         icon: ['fa', 'user'],
       },
     ],
+    beforeEnter: async  (to, from, next) => {
+      if (store.getters['auth/isLoggedIn']) {
+        next();
+      } else {
+        await store.dispatch('auth/getProfile');
+        if (store.getters['auth/isLoggedIn']) {
+          next();
+        } else {
+          next({
+            name: 'Auth_login',
+            query: {
+              redirectFrom: to.fullPath
+            }
+          });
+        }
+      }
+    }
   },
 ];
 

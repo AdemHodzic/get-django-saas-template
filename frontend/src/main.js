@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import setupInterceptors from './interceptors';
 
 import '@/assets/css/tailwind.css';
 
@@ -15,6 +16,8 @@ library.add(faUser, faHome);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false;
+
+setupInterceptors();
 
 new Vue({
   router,

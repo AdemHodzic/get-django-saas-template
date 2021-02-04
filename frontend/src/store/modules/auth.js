@@ -28,6 +28,7 @@ const actions = {
       console.log(payload)
       const { data } = await axios.post(`${baseUrl}/api/users/login`, payload);
       commit('setUser', data);
+      localStorage.setItem('token', data.token)
     } catch (error) {
       console.error(error);
       commit('setErrors', error);
@@ -38,11 +39,22 @@ const actions = {
     try {
       const { data } = await axios.post(`${baseUrl}/api/users/register`, payload);
       commit('setUser', data);
+      localStorage.setItem('token', data.token)
     } catch (error) {
       console.error(error);
       commit('setErrors', error);
     }
   },
+  async getProfile ({ commit }, payload) {
+    commit('setErrors', []);
+    try {
+      const { data } = await axios.get(`${baseUrl}/api/users/profile`);
+      commit('setUser', data);
+      localStorage.setItem('token', data.token)
+    } catch (error) {
+      localStorage.setItem('token', '')
+    }
+  }
 };
 
 export default {
