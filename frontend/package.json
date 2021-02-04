@@ -14,6 +14,7 @@
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "autoprefixer": "^9.8.6",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
@@ -23,7 +24,6 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
@@ -35,7 +35,8 @@
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
-    "root": true,
+    "useEslint": false,
+    "root": false,
     "env": {
       "node": true
     },
@@ -47,7 +48,8 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "max-len": "off"
+      "max-len": "off",
+      "no-shadow": "off"
     }
   },
   "browserslist": [
