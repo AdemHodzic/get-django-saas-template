@@ -26,7 +26,7 @@ class UserViewSet(viewsets.ModelViewSet):
       return Response(data={**serializer.data,
                       'token': token.key},
                       status=status.HTTP_200_OK)
-    return Response(status=status.HTTP_401_UNAUTHORIZED)
+    return Response(data={"errors": ['User does not exists']}, status=status.HTTP_401_UNAUTHORIZED)
     
   @action(detail=False, methods=['post'], permission_classes=[AllowAny], authentication_classes=[])
   def register(self, request):
