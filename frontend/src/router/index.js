@@ -28,6 +28,18 @@ const routes = [
         component: Register,
       },
     ],
+    beforeEnter: async  (to, from, next) => {
+      if (store.getters['auth/isLoggedIn']) {
+        next('/');
+      } else {
+        await store.dispatch('auth/getProfile');
+        if (store.getters['auth/isLoggedIn']) {
+          next('/');
+        } else {
+          next();
+        }
+      }
+    }
   },
   {
     path: '/',
