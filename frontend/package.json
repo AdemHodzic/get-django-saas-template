@@ -34,24 +34,6 @@
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   },
-  "eslintConfig": {
-    "useEslint": false,
-    "root": false,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/airbnb"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "max-len": "off",
-      "no-shadow": "off"
-    }
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
