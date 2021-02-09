@@ -5,7 +5,7 @@
     </router-link>
     <nav class="sidebar__nav">
       <router-link
-        v-for="route in $router.options.routes"
+        v-for="route in routes"
         :key="route.path"
         :to="route.path"
         :class="{ 'active-route': route.path === $router.currentRoute.path }">
@@ -19,6 +19,11 @@
 <script>
 export default {
   name: 'Sidebar',
+  computed: {
+    routes() {
+      return this.$router.options.routes.find((element) => element.name === 'Default').children;
+    },
+  },
 };
 </script>
 
