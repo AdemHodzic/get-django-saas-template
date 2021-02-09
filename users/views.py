@@ -34,7 +34,7 @@ class UserViewSet(viewsets.ModelViewSet):
     email = request.data.get('email', None)
 
     if User.objects.filter(email__iexact=email).exists():
-        return Response({'status': 210})
+        return Response(data={'errors': ['User already exists']}, status=400)
 
     serializer = UserWriteSerializer(data=request.data)
 
