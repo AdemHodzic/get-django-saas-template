@@ -43,13 +43,23 @@ const actions = {
       commit('setErrors', error.response.data.errors);
     }
   },
-  async getProfile ({ commit }, payload) {
+  async getProfile ({ commit }) {
     try {
       const { data } = await axios.get(`${baseUrl}/api/users/profile`);
       commit('setUser', data);
       localStorage.setItem('token', data.token)
     } catch (error) {
       localStorage.setItem('token', '')
+    }
+  },
+  async logout ({ commit }) {
+    commit('setErrors', []);
+    try {
+      await axios.post(`${baseUrl}/api/users/logout`)
+      commit('setUser', null);
+      localStorage.removeItem('token')
+    } catch (error) {
+      commit('setErrors', error.response.data.errors);
     }
   }
 };

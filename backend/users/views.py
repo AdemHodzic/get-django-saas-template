@@ -51,6 +51,15 @@ class UserViewSet(viewsets.ModelViewSet):
         data={**UserSerializer(user).data, 'token': token.key},
         status=status.HTTP_201_CREATED)
 
+  @action(
+    detail=False, 
+    methods=['post'],
+    permission_classes=[AllowAny],
+    authentication_classes=[TokenAuthentication])
+  def logout(self, request):
+      auth.logout(request)
+      return Response(status=status.HTTP_200_OK)
+
   @action(detail=False, methods=['GET'], permission_classes=[AllowAny], authentication_classes=[TokenAuthentication])
   def profile(self, request):
     if request.auth is not None :
