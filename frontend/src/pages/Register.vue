@@ -1,8 +1,11 @@
 <template>
-  <div class="login">
+  <div class="register">
         <div class="form-container flex flex-col gap-y-1 space-y-4 items-center justify-center sm:space-y-16 xs:space-y-16">
         <div class="text-2xl font-bold">
             Create your account
+        </div>
+        <div class="errors-container">
+          <alert-box v-for="(error, index) in errors" :key="index" :title="error"></alert-box>
         </div>
         <form class="flex flex-col space-y-4" @submit="onSubmit">
             <label class="flex flex-col">
@@ -38,8 +41,13 @@
 
 import { mapGetters, mapActions } from 'vuex';
 
+import AlertBox from '@/components/common/alert-box.vue'
+
 export default {
   name: 'RegisterPage',
+  components: {
+    AlertBox,
+  },
   data() {
     return {
       firstName: '',
@@ -74,7 +82,7 @@ export default {
 </script>
 
 <style>
-  .login {
+  .register {
     @apply bg-gray-100;
     @apply grid;
     grid-template-columns: 1fr 1fr 1fr;
