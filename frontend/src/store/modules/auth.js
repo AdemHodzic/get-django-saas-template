@@ -9,7 +9,7 @@ const state = {
 
 const getters = {
   isLoggedIn: (state) => state.user !== null,
-  errors: (state) => state.erors,
+  errors: (state) => state.errors,
 };
 
 const mutations = {
@@ -30,8 +30,7 @@ const actions = {
       commit('setUser', data);
       localStorage.setItem('token', data.token)
     } catch (error) {
-      console.error(error);
-      commit('setErrors', error);
+      commit('setErrors', error.response.data.errors);
     }
   },
   async register({ commit }, payload) {
@@ -41,12 +40,10 @@ const actions = {
       commit('setUser', data);
       localStorage.setItem('token', data.token)
     } catch (error) {
-      console.error(error);
-      commit('setErrors', error);
+      commit('setErrors', error.response.data.errors);
     }
   },
   async getProfile ({ commit }, payload) {
-    commit('setErrors', []);
     try {
       const { data } = await axios.get(`${baseUrl}/api/users/profile`);
       commit('setUser', data);

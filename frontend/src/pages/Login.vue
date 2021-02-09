@@ -4,6 +4,9 @@
         <div class="text-2xl font-bold">
             Log in
         </div>
+        <div class="errors-container">
+          <alert-box v-for="(error, index) in errors" :key="index" :title="error"></alert-box>
+        </div>
         <form class="flex flex-col space-y-4" @submit="onSubmit">
             <label class="flex flex-col">
                 <span class="text-gray-700 font-semibold pb-1">Email</span>
@@ -26,8 +29,13 @@
 
 import { mapGetters, mapActions } from 'vuex';
 
+import AlertBox from '@/components/common/alert-box.vue'
+
 export default {
   name: 'LoginPage',
+  components: {
+    AlertBox,
+  },
   data() {
     return {
       email: '',
