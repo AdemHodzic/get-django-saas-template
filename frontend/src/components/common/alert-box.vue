@@ -1,6 +1,9 @@
 <template>
   <div class="alert-box" role="alert">
     <p class="alert-box__title">{{ title }}</p>
+    <p class="alert-box__body">
+      <slot></slot>
+    </p>
   </div>
 </template>
 
@@ -24,5 +27,9 @@ export default {
 
   .alert-box__title {
     @apply font-bold;
+  }
+
+  .alert-box__body {
+    @apply pt-2;
   }
 </style>

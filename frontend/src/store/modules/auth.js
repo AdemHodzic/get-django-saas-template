@@ -8,6 +8,7 @@ const state = {
 };
 
 const getters = {
+  getUser: state => state.user,
   isLoggedIn: (state) => state.user !== null,
   errors: (state) => state.errors,
 };
