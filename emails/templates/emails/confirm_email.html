@@ -3,5 +3,5 @@ Hi {{ user.first_name }},
 
 Please click the button below to confirm your registration,
 
-<a href="http://{{ domain }}{% url 'emails:activate' id=id token=token  %}">Confirm</a>
+http://{{ domain }}{% url 'emails:activate' id=id token=token  %}
 {% endautoescape %}
