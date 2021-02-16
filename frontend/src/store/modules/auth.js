@@ -9,8 +9,9 @@ const state = {
 
 const getters = {
   getUser: state => state.user,
-  isLoggedIn: (state) => state.user !== null,
-  errors: (state) => state.errors,
+  isLoggedIn: state => state.user !== null,
+  isAdmin: state => state.user.is_admin,
+  errors: state => state.errors,
 };
 
 const mutations = {
