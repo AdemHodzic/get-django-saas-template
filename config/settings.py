@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'users',
+    'emails',
 ]
 
 MIDDLEWARE = [
