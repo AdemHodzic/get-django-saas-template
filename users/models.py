@@ -20,6 +20,7 @@ class UserManager(BaseUserManager):
             **extra
         )
         user.is_admin = True
+        user.confirmed_email = True
         user.save(using=self.db)
         return user
 
