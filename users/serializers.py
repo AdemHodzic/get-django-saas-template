@@ -11,6 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
       'last_name',
       'email',
       'avatar',
+      'confirmed_email',
     ]
   
   def get_avatar(self, obj):
