@@ -12,9 +12,17 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+import os
+
+import environ
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+ROOT_DIR = environ.Path(__file__) - 2
+
+env = environ.Env()
+env.read_env(env_file=ROOT_DIR('.env')) # reading .env file
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -143,3 +151,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8080"
 ]
+
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+
+SENDGRID_API_KEY = env.str("SENDGRID_API_KEY")
+SENDGRID_SANDBOX_MODE_IN_DEBUG=True
+SENDGRID_ECHO_TO_STDOUT=True
