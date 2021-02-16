@@ -12,7 +12,7 @@ def activate(request, id, token):
     uid = urlsafe_base64_decode(id).decode()
     user = User.objects.get(pk=uid)
     
-    if user is None or not account_activation_token.check_token(user, token):
+    if user is None or not account_activation_token.check_token(user, token) or user.confirmed_email:
       raise Exception('Invalid User')
     
     user.confirmed_email = True
