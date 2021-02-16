@@ -17,12 +17,19 @@
 </template>
 
 <script>
+
+import { mapGetters } from "vuex";
 export default {
   name: 'Sidebar',
   computed: {
+    ...mapGetters('auth', ['isAdmin']),
     routes() {
-      return this.$router.options.routes.find((element) => element.name === 'Default').children;
+      const routes = this.$router.options.routes.find((element) => element.name === 'Default').children
+      return this.isAdmin ? routes : routes.filter(element => !element.adminOnly);
     },
+  },
+  beforeCreate() {
+    console.log(this.$router)
   },
 };
 </script>

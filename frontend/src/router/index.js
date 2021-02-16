@@ -58,6 +58,21 @@ const routes = [
         component: () => import(/* webpackChunkName: "profile" */ '../pages/Profile.vue'),
         icon: ['fa', 'user'],
       },
+      {
+        path: '/components',
+        name: 'Components',
+        component: () => import(/* webpackChunkName: "components" */ '../pages/dev/ComponentsPreview.vue'),
+        beforeEnter: async (to, from, next) => {
+          const user =  store.getters['auth/getUser']
+
+          if (!user.is_admin) {
+            next({ name: 'Home' })
+          } else {
+            next()
+          }
+        },
+        adminOnly: true,
+      }
     ],
     beforeEnter: async  (to, from, next) => {
       if (store.getters['auth/isLoggedIn']) {
