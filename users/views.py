@@ -10,6 +10,8 @@ from django.contrib import auth
 from .serializers import UserSerializer, UserWriteSerializer
 from .models import User
 
+from emails.signals import SendConfirmationEmail
+
 class UserViewSet(viewsets.ModelViewSet):
   queryset = User.objects.all()
   serializer_class = UserSerializer
@@ -44,6 +46,8 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer.save()
 
     user = User.objects.get(**serializer.data)
+
+    SendConfirmationEmail.send(sender=self.__class__, request=request, user=user)
 
     token, _ = Token.objects.get_or_create(user=user)
 
