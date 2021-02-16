@@ -26,10 +26,6 @@ export default {
 </script>
 
 <style>
-  .home {
-    @apply py-2 px-4;
-  }
-
   .home__confirm-email-alert {
     @apply my-4;
   }

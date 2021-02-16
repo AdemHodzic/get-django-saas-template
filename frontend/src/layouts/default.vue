@@ -31,6 +31,7 @@ export default {
   }
 
   .router {
+    @apply py-2 px-4;
     flex: 6;
   }
 </style>
