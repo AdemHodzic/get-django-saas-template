@@ -158,3 +158,5 @@ EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 SENDGRID_API_KEY = env.str("SENDGRID_API_KEY")
 SENDGRID_SANDBOX_MODE_IN_DEBUG=True
 SENDGRID_ECHO_TO_STDOUT=True
+
+DEFAULT_EMAIL=env.str("DEFAULT_EMAIL", "hello@example.com")
