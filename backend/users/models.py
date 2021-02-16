@@ -33,6 +33,7 @@ class User(AbstractUser):
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     avatar = models.ImageField(verbose_name='Avatar', blank=True)
+    confirmed_email = models.BooleanField(default=False)
 
     objects = UserManager()
 
