@@ -66,8 +66,8 @@ export default {
       event.preventDefault();
 
       await this.register({
-        firstName: this.firstName,
-        lastName: this.lastName,
+        first_name: this.firstName,
+        last_name: this.lastName,
         email: this.email,
         password: this.password,
       });
