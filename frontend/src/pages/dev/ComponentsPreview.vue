@@ -24,7 +24,7 @@
 
     <h1 class="area-title">Buttons</h1>
     <hr />
-    <div class="buttons-container">
+    <div class="elements-container">
       <AtomsBaseButton>Lorem Impsum</AtomsBaseButton>
       <AtomsPrimaryButton>Lorem Impsum</AtomsPrimaryButton>
       <AtomsSuccessButton>Lorem Impsum</AtomsSuccessButton>
@@ -34,7 +34,13 @@
 
     <h1 class="area-title">Inputs</h1>
     <hr />
-    <AtomsTextInput placeholder="Elon Musk" />
+    <div class="elements-container">
+      <AtomsBaseInput type="text" placeholder="Elon Musk" />
+      <AtomsBaseInput type="number" placeholder="42" />
+      <AtomsBaseInput type="password" placeholder="*******" />
+      <AtomsBaseInput type="textarea" placeholder="lorem ipsum dorem sit amet" />
+    </div>
+
   </div>
 </template>
 
@@ -52,7 +58,7 @@ import AtomsSuccessButton from '@/components/atoms/buttons/success-button.vue'
 import AtomsDangerButton from '@/components/atoms/buttons/danger-button.vue'
 import AtomsWarningButton from '@/components/atoms/buttons/warning-button.vue'
 
-import AtomsTextInput from '@/components/atoms/inputs/text-input.vue'
+import AtomsBaseInput from '@/components/atoms/inputs/base-input.vue'
 
 export default {
   name: 'ComponentsPreviewPage',
@@ -67,7 +73,7 @@ export default {
     AtomsSuccessButton,
     AtomsDangerButton,
     AtomsWarningButton,
-    AtomsTextInput,
+    AtomsBaseInput,
   },
 }
 </script>
@@ -77,7 +83,7 @@ export default {
     @apply mb-4;
   }
 
-  .buttons-container {
+  .elements-container {
     @apply flex;
     gap: 8px;
   }

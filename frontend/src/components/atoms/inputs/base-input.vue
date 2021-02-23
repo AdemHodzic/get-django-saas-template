@@ -1,15 +1,15 @@
 <template>
-  <input type="text" class="text-input" v-bind="$props">
+  <input class="base-input" v-bind="$props">
 </template>
 
 <script>
 export default {
-  name: 'AtomsTextInput',
+  name: 'AtomsBaseInput',
 }
 </script>
 
 <style>
-  .text-input {
+  .base-input {
     @apply placeholder-gray-400 rounded-md;
     @apply bg-white focus:bg-white;
     @apply border-2 border-blue-500 focus:border-blue-700;  
