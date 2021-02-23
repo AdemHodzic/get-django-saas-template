@@ -45,6 +45,9 @@ export default {
     @apply bg-white;
     border-right-width: 1px;
     gap: 16px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
   }
 
   .sidebar__title {
