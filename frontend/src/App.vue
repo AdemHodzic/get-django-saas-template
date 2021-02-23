@@ -10,8 +10,8 @@ export default {
 
 <style>
   .main-router {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     @apply bg-gray-100;
   }
 </style>
