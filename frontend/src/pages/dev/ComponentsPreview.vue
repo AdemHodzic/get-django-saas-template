@@ -20,6 +20,7 @@
       <AtomsDangerButton>Lorem Impsum</AtomsDangerButton>
       <AtomsWarningButton>Lorem Impsum</AtomsWarningButton>
     </div>
+    <AtomsTextInput placeholder="Elon Musk" />
   </div>
 </template>
 
@@ -37,6 +38,8 @@ import AtomsSuccessButton from '@/components/atoms/buttons/success-button.vue'
 import AtomsDangerButton from '@/components/atoms/buttons/danger-button.vue'
 import AtomsWarningButton from '@/components/atoms/buttons/warning-button.vue'
 
+import AtomsTextInput from '@/components/atoms/inputs/text-input.vue'
+
 export default {
   name: 'ComponentsPreviewPage',
   components: {
@@ -50,6 +53,7 @@ export default {
     AtomsSuccessButton,
     AtomsDangerButton,
     AtomsWarningButton,
+    AtomsTextInput,
   },
 }
 </script>
