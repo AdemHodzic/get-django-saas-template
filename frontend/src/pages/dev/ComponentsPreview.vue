@@ -39,6 +39,7 @@
       <AtomsBaseInput type="number" placeholder="42" />
       <AtomsBaseInput type="password" placeholder="*******" />
       <AtomsBaseInput type="textarea" placeholder="lorem ipsum dorem sit amet" />
+      <AtomsCheckbox>Lorem ipsum</AtomsCheckbox>
     </div>
     <h1 class="area-title">Table</h1>
     <hr />
@@ -100,6 +101,7 @@ import AtomsWarningButton from '@/components/atoms/buttons/warning-button.vue'
 import AtomsTable from '@/components/atoms/table/table.vue'
 
 import AtomsBaseInput from '@/components/atoms/inputs/base-input.vue'
+import AtomsCheckbox from '@/components/atoms/inputs/checkbox.vue'
 
 export default {
   name: 'ComponentsPreviewPage',
@@ -115,6 +117,7 @@ export default {
     AtomsDangerButton,
     AtomsWarningButton,
     AtomsBaseInput,
+    AtomsCheckbox,
     AtomsTable,
   },
   data() {
