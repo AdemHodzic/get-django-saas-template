@@ -82,6 +82,10 @@
         </div>
       </template>
     </div>
+
+    <h1 class="area-title">Tab bar</h1>
+    <hr />
+    <AtomsTabBar :tabs="['first', 'second', 'third']"></AtomsTabBar>
   </div>
 </template>
 
@@ -103,6 +107,9 @@ import AtomsTable from '@/components/atoms/table/table.vue'
 import AtomsBaseInput from '@/components/atoms/inputs/base-input.vue'
 import AtomsCheckbox from '@/components/atoms/inputs/checkbox.vue'
 
+import AtomsTabBar from '@/components/atoms/tab-bar.vue'
+
+
 export default {
   name: 'ComponentsPreviewPage',
   components: {
@@ -119,6 +126,7 @@ export default {
     AtomsBaseInput,
     AtomsCheckbox,
     AtomsTable,
+    AtomsTabBar,
   },
   data() {
     return {
