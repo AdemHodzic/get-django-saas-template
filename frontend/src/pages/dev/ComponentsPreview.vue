@@ -40,7 +40,47 @@
       <AtomsBaseInput type="password" placeholder="*******" />
       <AtomsBaseInput type="textarea" placeholder="lorem ipsum dorem sit amet" />
     </div>
+    <h1 class="area-title">Table</h1>
+    <hr />
+    <AtomsTable>
+      <template v-slot:thead>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+      </template>
+      <tr>
+        <td>1</td>
+        <td>Adem #1</td>
+        <td>adem@test.com</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Adem #2</td>
+        <td>adem@test.com</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Adem #3</td>
+        <td>adem@test.com</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Adem #4</td>
+        <td>adem@test.com</td>
+      </tr>
+    </AtomsTable>
 
+    <h1 class="area-title">Calendar</h1>
+    <span>Check <a class="v-calendar-docs-link" target="_blank" href="https://vcalendar.io/">v-calendar documentation</a></span>
+    <hr />
+    <div class="elements-container">
+      <template v-for="color in colors">
+        <div class="elements-container" :key="color">
+          <v-date-picker v-model="date" :color="color" />
+          <v-date-picker v-model="date" :color="color" is-dark/>
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -57,6 +97,7 @@ import AtomsPrimaryButton from '@/components/atoms/buttons/primary-button.vue'
 import AtomsSuccessButton from '@/components/atoms/buttons/success-button.vue'
 import AtomsDangerButton from '@/components/atoms/buttons/danger-button.vue'
 import AtomsWarningButton from '@/components/atoms/buttons/warning-button.vue'
+import AtomsTable from '@/components/atoms/table/table.vue'
 
 import AtomsBaseInput from '@/components/atoms/inputs/base-input.vue'
 
@@ -74,6 +115,13 @@ export default {
     AtomsDangerButton,
     AtomsWarningButton,
     AtomsBaseInput,
+    AtomsTable,
+  },
+  data() {
+    return {
+      date: new Date(),
+      colors: ["gray", "red", "orange", "yellow", "green", "teal", "blue", "indigo", "purple", "pink"]
+    };
   },
 }
 </script>
@@ -84,12 +132,20 @@ export default {
   }
 
   .elements-container {
-    @apply flex;
+    @apply flex flex-wrap;
     gap: 8px;
   }
 
   .area-title {
     @apply font-bold text-4xl;
+  }
+
+  .v-calendar-docs-link {
+    @apply text-blue-500;
+  }
+
+  .v-calendar-docs-link:hover {
+    @apply text-blue-700 underline;
   }
 </style>
 
