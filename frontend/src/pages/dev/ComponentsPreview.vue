@@ -110,6 +110,10 @@
       </template>
 
     </AtomsTabBar>
+
+    <h1 class="area-title">Progress bar</h1>
+    <hr />
+    <AtomsProgressBar value="50"></AtomsProgressBar>
   </div>
 </template>
 
@@ -133,6 +137,7 @@ import AtomsCheckbox from '@/components/atoms/inputs/checkbox.vue'
 import AtomsSliderInput from '@/components/atoms/inputs/slider-input.vue'
 
 import AtomsTabBar from '@/components/atoms/tab-bar.vue'
+import AtomsProgressBar from '@/components/atoms/progress-bar.vue'
 
 
 export default {
@@ -153,6 +158,7 @@ export default {
     AtomsSliderInput,
     AtomsTable,
     AtomsTabBar,
+    AtomsProgressBar,
   },
   data() {
     return {
