@@ -40,6 +40,7 @@
       <AtomsBaseInput type="password" placeholder="*******" />
       <AtomsBaseInput type="textarea" placeholder="lorem ipsum dorem sit amet" />
       <AtomsCheckbox>Lorem ipsum</AtomsCheckbox>
+      <AtomsSliderInput min="1" max="100" value="50" />
     </div>
     <h1 class="area-title">Table</h1>
     <hr />
@@ -129,6 +130,7 @@ import AtomsTable from '@/components/atoms/table/table.vue'
 
 import AtomsBaseInput from '@/components/atoms/inputs/base-input.vue'
 import AtomsCheckbox from '@/components/atoms/inputs/checkbox.vue'
+import AtomsSliderInput from '@/components/atoms/inputs/slider-input.vue'
 
 import AtomsTabBar from '@/components/atoms/tab-bar.vue'
 
@@ -148,6 +150,7 @@ export default {
     AtomsWarningButton,
     AtomsBaseInput,
     AtomsCheckbox,
+    AtomsSliderInput,
     AtomsTable,
     AtomsTabBar,
   },
