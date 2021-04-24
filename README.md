@@ -1,5 +1,7 @@
 # GetDjangoSaaS - Django Rest Framework/Vue.js SaaS Boilerplate That Saves You Time
 
+![banner](docs/screenshots/banner.png)
+
 ## Intro
 
 *GetDjangoSaaS* is DRF/Vue Saas boilerplate to get you started as soon as possible on your next million-dollar idea.
