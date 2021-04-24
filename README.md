@@ -2,11 +2,22 @@
 
 ![banner](docs/screenshots/banner.png)
 
+**NOTE: GetDjangoSaas is still in early alpha so please send as much as feedback as possible. Thank you!**
+
 ## Intro
 
 *GetDjangoSaaS* is DRF/Vue Saas boilerplate to get you started as soon as possible on your next million-dollar idea.
 
-I've built it with simplicity in mind so you'll find the minimumof packages inside.
+I've built it with simplicity in mind so you'll find the bare minimum of packages inside.
+
+It comes with some pre-built components you may want to use (or not, that's cool too).
+
+There are no code generators inside.
+
+Every package is optional and you can remove and replace each one of them. 
+
+Even the backend and fronend are in seperate directories so if you'd rather use Rails instead of Django or React instead of Vue, you can do that as well.
+
 
 ## Features
 
