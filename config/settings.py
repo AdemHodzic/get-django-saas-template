@@ -46,14 +46,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+
+
     'users',
     'emails',
 ]
+
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -116,6 +127,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# dj-rest-auth
+SITE_ID = 1
+
+ACCOUNT_EMAIL_VERIFICATION='none'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -153,10 +169,16 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8080"
 ]
 
-EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-
-SENDGRID_API_KEY = env.str("SENDGRID_API_KEY")
-SENDGRID_SANDBOX_MODE_IN_DEBUG=True
-SENDGRID_ECHO_TO_STDOUT=True
-
-DEFAULT_EMAIL=env.str("DEFAULT_EMAIL", "hello@example.com")
+if DEBUG:
+    EMAIL_HOST = 'localhost'
+    EMAIL_PORT = 1025
+    EMAIL_HOST_USER = ''
+    EMAIL_HOST_PASSWORD = ''
+    EMAIL_USE_TLS = False
+    DEFAULT_FROM_EMAIL = 'testing@example.com'
+else:
+    EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+    SENDGRID_API_KEY = env.str("SENDGRID_API_KEY")
+    SENDGRID_SANDBOX_MODE_IN_DEBUG=True
+    SENDGRID_ECHO_TO_STDOUT=True
+    DEFAULT_EMAIL=env.str("DEFAULT_EMAIL", "hello@example.com")
