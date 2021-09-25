@@ -31,7 +31,22 @@ Even the backend and fronend are in seperate directories so if you'd rather use 
 
 1. Clone this repo and cd into it
 
+
+## Docker route
+
+
 ### Backend Setup
+
+From here you have two routes on how do you want to run the project: Docker route and local setup route
+
+#### Docker route
+
+1. `cd backend` 
+2. Create a volume for our database with `docker volume create get-django-saas-postgres`
+3. Build and run our Docker composition with `docker-compose up --build`
+4. Create a super user with `sudo docker-compose run web python manage.py createsuperuser`
+
+#### Local setup route
 
 1. Install `virtualenv` package with `pip install virtualenv`
 2. Create a virtual environment. I keep my venvs in `~/.venvs` folder and create them with `virtualenv ~/.venvs/{PROJECT_NAME}`
