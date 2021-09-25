@@ -68,8 +68,10 @@ export default {
       await this.register({
         first_name: this.firstName,
         last_name: this.lastName,
+        username: `${this.lastName} ${this.firstName}`,
         email: this.email,
-        password: this.password,
+        password1: this.password,
+        password2: this.password,
       });
 
       if (!this.errors || this.errors.length === 0) {

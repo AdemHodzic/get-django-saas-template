@@ -24,32 +24,31 @@ const mutations = {
 };
 
 const actions = {
-  async login({ commit }, payload) {
+  async login({ commit, dispatch }, payload) {
     commit('setErrors', []);
     try {
       console.log(payload)
-      const { data } = await axios.post(`${baseUrl}/api/users/login`, payload);
-      commit('setUser', data);
-      localStorage.setItem('token', data.token)
+      const { data } = await axios.post(`${baseUrl}/auth/login/`, payload);
+      localStorage.setItem('token', data.key)
+      dispatch('getProfile')
     } catch (error) {
       commit('setErrors', error.response.data.errors);
     }
   },
-  async register({ commit }, payload) {
+  async register({ commit, dispatch }, payload) {
     commit('setErrors', []);
     try {
-      const { data } = await axios.post(`${baseUrl}/api/users/register`, payload);
-      commit('setUser', data);
-      localStorage.setItem('token', data.token)
+      const { data } = await axios.post(`${baseUrl}/auth/registration/`, payload);
+      dispatch('getProfile')
+      localStorage.setItem('token', data.key)
     } catch (error) {
       commit('setErrors', error.response.data.errors);
     }
   },
   async getProfile ({ commit }) {
     try {
-      const { data } = await axios.get(`${baseUrl}/api/users/profile`);
+      const { data } = await axios.get(`${baseUrl}/auth/user/`);
       commit('setUser', data);
-      localStorage.setItem('token', data.token)
     } catch (error) {
       localStorage.setItem('token', '')
     }
@@ -57,7 +56,7 @@ const actions = {
   async logout ({ commit }) {
     commit('setErrors', []);
     try {
-      await axios.post(`${baseUrl}/api/users/logout`)
+      await axios.post(`${baseUrl}/auth/logout/`)
       commit('setUser', null);
       localStorage.removeItem('token')
     } catch (error) {
