@@ -1,0 +1,35 @@
+version: "2"
+   
+services:
+  db:
+    image: postgres
+    volumes:
+      - 'get-django-saas-postgres:/data'
+    environment:
+      - POSTGRES_DB=getdjangosaas
+      - POSTGRES_USER=getdjangosaasuser
+      - POSTGRES_PASSWORD=getdjangosaaspass
+    ports:
+      - '5432:5432'
+  web:
+    build: .
+    working_dir: /code
+    command: bash -c "
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_NAME=getdjangosaas
+      - DB_USER=getdjangosaasuser
+      - DB_PASSWORD=getdjangosaaspass
+      - DB_HOST=db
+      - DB_PORT=5432
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+volumes:
+  get-django-saas-postgres:
+    external: true
