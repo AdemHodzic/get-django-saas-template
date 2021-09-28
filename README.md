@@ -53,8 +53,9 @@ From here you have two routes on how do you want to run the project: Docker rout
 3. Enter virtual environment with `source ~/.venvs/{PROJECT_NAME}/bin/activate`
 4. `cd backend`
 5. Install dependencies with `pip install -r requirements.txt`
-6. Run server with `python manage.py runserver`
-7. For authentication you'll need to run an email server. This boilerplate uses Sendgrid for emails but I reccoment using Python's built in SMTP server for development. Everything is already set up so all you need to do is open a new terminal an run `python3.6 -m smtpd -n -c DebuggingServer localhost:1025`
+6. `cp .env.example .env` and fill in database info and optionally, `SENDGRID_API_KEY`
+7. Run server with `python manage.py runserver`
+8. For authentication you'll need to run an email server. This boilerplate uses Sendgrid for emails but I reccoment using Python's built in SMTP server for development. Everything is already set up so all you need to do is open a new terminal an run `python3.6 -m smtpd -n -c DebuggingServer localhost:1025`
 
 ### Fronend Setup
 
