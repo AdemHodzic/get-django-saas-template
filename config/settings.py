@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'django_celery_results',
 
     'allauth',
     'allauth.account',
@@ -186,3 +187,33 @@ else:
     SENDGRID_SANDBOX_MODE_IN_DEBUG=True
     SENDGRID_ECHO_TO_STDOUT=True
     DEFAULT_EMAIL=env.str("DEFAULT_EMAIL", "hello@example.com")
+
+
+# Celery
+
+CELERY_RESULT_BACKEND = 'django-db'
+BROKER_TRANSPORT = "redis"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SELERLIZER = 'json'
+
+# BROKER Celery
+REDIS_AUTH = os.getenv("REDIS_PASS", None)
+
+if REDIS_AUTH:
+    BROKER_URL = (
+        "rediss://"
+        + ":"
+        + os.environ.get("REDIS_PASS", "").rstrip("\n")
+        + "@"
+        + os.environ.get("REDIS_HOST", "redis")
+        + ":"
+        + os.environ.get("REDIS_PORT", "6378")
+        + "/"
+        + os.environ.get("REDIS_DB", 0)
+        + "?ssl_cert_reqs=none"
+    )
+else:
+    BROKER_URL = os.getenv("REDIS_URL", "redis://redis:6379")

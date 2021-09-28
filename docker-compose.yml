@@ -11,6 +11,30 @@ services:
       - POSTGRES_PASSWORD=getdjangosaaspass
     ports:
       - '5432:5432'
+  redis:
+    image: 'redis:5.0-alpine'
+    volumes:
+      - 'get-django-saas-redis:/data'
+    ports:
+      - '6379:6379'
+
+  worker:
+    build: .
+    working_dir: /code
+    command: ['celery', '-A', 'config', 'worker', '-l', 'INFO']
+    environment:
+      - DB_NAME=getdjangosaas
+      - DB_USER=getdjangosaasuser
+      - DB_PASSWORD=getdjangosaaspass
+      - DB_HOST=db
+      - DB_PORT=5432
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis
+
   web:
     build: .
     working_dir: /code
@@ -24,12 +48,17 @@ services:
       - DB_PASSWORD=getdjangosaaspass
       - DB_HOST=db
       - DB_PORT=5432
+      - REDIS_URL=redis://redis:6379
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
+      - redis
+
 volumes:
   get-django-saas-postgres:
+    external: true
+  get-django-saas-redis:
     external: true
