@@ -1,0 +1,7 @@
+build:
+  docker:
+    web: backend/Dockerfile
+release:
+  image: web
+  command:
+    - ./run.sh
