@@ -22,6 +22,7 @@ django-filter==2.4.0
 django-rest-auth==0.9.5
 djangorestframework==3.12.2
 environ==1.0
+gunicorn==20.1.0
 idna==3.2
 importlib-metadata==3.4.0
 kombu==5.1.0
