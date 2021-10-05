@@ -71,3 +71,7 @@ From here you have two routes on how do you want to run the project: Docker rout
 ![components_2](docs/screenshots/components_2.png)
 ![components_3](docs/screenshots/components_3.png)
 ![components_4](docs/screenshots/components_4.png)
+
+## Deployment
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
