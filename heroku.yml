@@ -4,4 +4,4 @@ build:
 release:
   image: web
   command:
-    - bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn config.wsgi --log-file"
+    - bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn config.wsgi --log-file -"
