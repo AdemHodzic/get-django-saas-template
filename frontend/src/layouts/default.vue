@@ -22,7 +22,6 @@ export default {
     @apply justify-start;
     @apply items-stretch;
     @apply bg-gray-100;
-    height: 100%;
     width: 100%;
   }
 

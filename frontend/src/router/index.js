@@ -62,15 +62,15 @@ const routes = [
         path: '/components',
         name: 'Components',
         component: () => import(/* webpackChunkName: "components" */ '../pages/dev/ComponentsPreview.vue'),
-        beforeEnter: async (to, from, next) => {
-          const user =  store.getters['auth/getUser']
+        // beforeEnter: async (to, from, next) => {
+        //   const user =  store.getters['auth/getUser']
 
-          if (!user.is_admin) {
-            next({ name: 'Home' })
-          } else {
-            next()
-          }
-        },
+        //   if (!user.is_admin) {
+        //     next({ name: 'Home' })
+        //   } else {
+        //     next()
+        //   }
+        // },
         adminOnly: true,
       }
     ],
