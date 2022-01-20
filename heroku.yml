@@ -8,4 +8,4 @@ release:
 run:
   image: web
   command:
-    - "gunicorn --bind 0.0.0.0:$PORT config.wsgi --log-file -"
+    - gunicorn --bind 0.0.0.0:$PORT config.wsgi --log-file -
