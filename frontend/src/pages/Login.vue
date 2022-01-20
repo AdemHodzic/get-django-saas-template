@@ -66,7 +66,7 @@ export default {
 
 <style>
   .login {
-    @apply bg-gray-100;
+    @apply bg-gray-100 p-4;
     @apply grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;

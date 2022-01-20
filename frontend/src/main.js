@@ -10,6 +10,7 @@ import router from './router';
 import store from './store';
 import setupInterceptors from './interceptors';
 
+import '@/assets/css/base.css';
 import '@/assets/css/tailwind.css';
 
 library.add(faUser, faHome);
