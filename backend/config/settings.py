@@ -14,6 +14,7 @@ from pathlib import Path
 
 import os
 import django_heroku
+import dj_database_url
 
 import environ
 
@@ -33,6 +34,8 @@ SECRET_KEY = 'jqf4nbg0n!-*0027_*1bu4hq1^nyw%c*=)1+%*qdp%f3#(l3ba'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+IS_HEROKU = env.str('IS_HEROKU', 'False') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -103,16 +106,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env.str('DB_NAME'),
-        'USER': env.str('DB_USER'),
-        'PASSWORD': env.str('DB_PASSWORD'),
-        'HOST': env.str('DB_HOST', 'localhost'),
-        'PORT': env.str('DB_PORT', '5432'),
+if IS_HEROKU:
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=os.getenv("DATABASE_URL"), conn_max_age=600, ssl_require=True
+        )
     }
-}
+    DATABASES["default"]["OPTIONS"]["gssencmode"] = "disable"
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': env.str('DB_NAME'),
+            'USER': env.str('DB_USER'),
+            'PASSWORD': env.str('DB_PASSWORD'),
+            'HOST': env.str('DB_HOST', 'localhost'),
+            'PORT': env.str('DB_PORT', '5432'),
+        }
+    }
 
 
 # Password validation
