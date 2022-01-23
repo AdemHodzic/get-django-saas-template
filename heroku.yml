@@ -7,3 +7,7 @@ release:
     - bash -c "python manage.py makemigrations && python manage.py migrate"
 run:
   web: gunicorn --bind 0.0.0.0:$PORT config.wsgi --log-file -
+  worker:
+    image: web
+    command:
+      - celery -A config worker -l INFO
