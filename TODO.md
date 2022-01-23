@@ -1,3 +1,2 @@
 - Show error messages on failed login/register
 - Pull `docker-compose` one level up so we can Dockerize the frontend
-- Modify `heroku.yml` to automatically set up all env vartiables and add-ons
