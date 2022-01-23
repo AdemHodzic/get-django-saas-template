@@ -19,7 +19,7 @@ services:
       - '6379:6379'
 
   worker:
-    build: .
+    build: ./backend
     working_dir: /code
     command: ['celery', '-A', 'config', 'worker', '-l', 'INFO']
     environment:
@@ -30,13 +30,13 @@ services:
       - DB_PORT=5432
       - REDIS_URL=redis://redis:6379
     volumes:
-      - .:/code
+      - ./backend:/code
     depends_on:
       - db
       - redis
 
   web:
-    build: .
+    build: ./backend
     working_dir: /code
     command: bash -c "
       python manage.py makemigrations &&
@@ -50,12 +50,23 @@ services:
       - DB_PORT=5432
       - REDIS_URL=redis://redis:6379
     volumes:
-      - .:/code
+      - ./backend:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
       - redis
+
+  frontend:
+    build: ./frontend
+    working_dir: /frontend
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    ports:
+      - 8080:8080
+    depends_on:
+      - web
 
 volumes:
   get-django-saas-postgres:
